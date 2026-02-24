@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compare Colleges — CollegeFinder</title>
+
+  <!-- reuse global styles -->
+  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- compare-specific overrides -->
+  <link rel="stylesheet" href="assets/css/compare.css">
+
+</head>
+<body class="page-compare">
+
+  <!-- Header (same as homepage) -->
+  <header id="mainHeader" class="transparent">
+    <div class="wrap header-row">
+      <div class="brand-text">CollegeFinder</div>
+      <nav class="nav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="index.html" class="nav-link">Streams</a>
+  <a href="index.html" class="nav-link">Colleges</a>
+</nav>
+
+<!-- PROFILE MENU -->
+<div class="header-actions">
+  <div class="profile-menu">
+    <button id="profileToggle" class="profile-btn">
+      ☰
+      <img src="assets/images/avatar.png" class="profile-avatar" alt="User">
+    </button>
+
+    <div id="profileDropdown" class="profile-dropdown">
+      <a href="profile.html" class="dropdown-item logged-in">My Profile</a>
+      <button id="logoutBtn" class="dropdown-item logged-in">Logout</button>
+
+      <a href="auth.html" class="dropdown-item logged-out">Login</a>
+      <a href="auth.html" class="dropdown-item logged-out">Sign Up</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-top:86px;">
+    <section class="card" style="padding:18px;margin-bottom:18px;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;">
+        <div>
+          <h2 style="margin:0 0 6px;">Compare Colleges</h2>
+          <div class="muted small">Compare upto 4 colleges side-by-side. Best values are highlighted.</div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button id="btn-export" class="btn outline">Export CSV</button>
+          <button id="btn-print" class="btn ghost">Print</button>
+          <button id="btn-clear" class="btn outline">Clear Compare</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="compareContainer" class="card" style="padding:0;overflow:hidden;min-height:260px;">
+      <!-- will be populated by JS -->
+      <div id="emptyState" style="padding:40px;text-align:center;">
+        <h3 style="margin-bottom:6px;">No colleges selected for comparison</h3>
+        <p class="muted">Use the <strong>+ Compare</strong> button on the results to add colleges here.</p>
+        <div style="margin-top:16px;">
+          <a href="index.html" class="btn primary">Back to Search</a>
+        </div>
+      </div>
+
+      <div id="compareTableWrap" style="display:none;padding:20px;">
+        <div class="compare-scroll">
+          <table id="compareTable" class="compare-table" role="table" aria-live="polite">
+            <!-- JS will render table head/body -->
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div id="relatedCTA" style="margin-top:18px;display:none;">
+      <!-- optional related or suggestions -->
+    </div>
+  </main>
+
+  <footer class="main-footer">
+  <div class="footer-container">
+
+    <h2 class="footer-logo">CollegeFinder</h2>
+    <p class="footer-tagline">
+      A smart platform to help students discover and compare colleges after 12th.
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="compare.html">Compare Colleges</a>
+      <a href="profile.html">My Profile</a>
+    </div>
+
+    <p class="footer-disclaimer">
+      College data shown is for informational purposes only and may vary.
+    </p>
+
+    <p class="footer-copy">
+      © 2026 CollegeFinder. All rights reserved.
+    </p>
+
+  </div>
+</footer>
+
+
+  <!-- Data + Script -->
+  <!-- <script src="assets/js/data.js"></script> -->
+     <script src="assets/js/api.js"></script>
+  <script src="assets/js/compare.js"></script>
+
+  <script>
+    // header scroll behavior reuse from home.js
+  // header scroll behavior (DISABLED for compare page)
+(function headerScroll() {
+  if (document.body.classList.contains("page-compare")) return;
+
+  const header = document.getElementById('mainHeader');
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 120) {
+      header.classList.remove('transparent');
+      header.classList.add('solid');
+    } else {
+      header.classList.add('transparent');
+      header.classList.remove('solid');
+    }
+  });
+})();
+
+    // show year
+   const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
+  
+  const profileToggle = document.getElementById("profileToggle");
+  const profileDropdown = document.getElementById("profileDropdown");
+  const isLoggedIn = localStorage.getItem("cf_logged_in") === "true";
+
+  if (profileToggle && profileDropdown) {
+    profileToggle.onclick = (e) => {
+      e.stopPropagation();
+      profileDropdown.style.display =
+        profileDropdown.style.display === "flex" ? "none" : "flex";
+    };
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".profile-menu")) {
+        profileDropdown.style.display = "none";
+      }
+    });
+  }
+
+  document.querySelectorAll(".logged-in").forEach(el =>
+    el.style.display = isLoggedIn ? "block" : "none"
+  );
+  document.querySelectorAll(".logged-out").forEach(el =>
+    el.style.display = isLoggedIn ? "none" : "block"
+  );
+
+  
+
+
+  </script>
+</body>
+</html>

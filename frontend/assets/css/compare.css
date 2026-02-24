@@ -1,0 +1,261 @@
+/* assets/css/compare.css
+   small scoped styles for compare.html
+*/
+
+.compare-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* allows horizontal scroll on small screens */
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* header row contains college cards (name + remove) */
+.compare-table thead th {
+  vertical-align: top;
+  text-align: left;
+  padding: 12px;
+  background: transparent;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* the left column labels */
+.compare-table tbody th.label {
+  width: 240px;
+  text-align: left;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+  font-weight: 700;
+  vertical-align: middle;
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+
+/* each college cell */
+.compare-table td {
+  padding: 14px 16px;
+  background: #fff;
+  color: #0b1220;
+  vertical-align: top;
+  border-right: 1px solid rgba(0,0,0,0.04);
+}
+
+/* top header college card inside thead th */
+.col-card {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.col-card .thumb {
+  width:72px; height:56px; border-radius:8px; background-size:cover; background-position:center; flex-shrink:0;
+}
+.col-card .meta { display:flex; flex-direction:column; gap:6px; }
+.col-card .meta .name { font-weight:800; font-size:15px; color:#0b1220; text-decoration:none; }
+.col-card .meta .city { font-size:13px; color:#6b7280; }
+
+/* remove button on header */
+.remove-col {
+  margin-left:auto;
+  background: transparent;
+  border: none;
+  font-weight:700;
+  cursor: pointer;
+  color: #374151;
+  padding: 6px 8px;
+  border-radius:8px;
+}
+.remove-col:hover { background: #f3f4f6; }
+
+/* badges for best values */
+.badge {
+  display:inline-block;
+  padding:6px 8px;
+  font-weight:800;
+  font-size:12px;
+  border-radius:999px;
+  color:#fff;
+}
+.badge.best-placement { background: #10b981; }   /* green */
+.badge.best-cutoff    { background: #059669; }
+.badge.best-fees      { background: #fb923c; }   /* orange */
+.badge.best-ranking   { background: #3b82f6; }   /* blue */
+
+/* small label style inside cells */
+.small-muted { font-size:13px; color:#6b7280; }
+
+/* responsive stacking at small widths */
+@media (max-width:720px) {
+  .compare-table { min-width: 680px; }
+  .compare-table tbody th.label { width:180px; }
+}
+
+/* print-friendly */
+@media print {
+  body { background: #fff; color: #000; }
+  .site-header, .site-footer, #btn-export, #btn-clear, #btn-print { display:none !important; }
+  .compare-table { min-width: 0 !important; width:100% !important; }
+}
+.compare-col {
+  text-align: left;
+}
+
+.compare-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+
+.compare-city {
+  font-size: 13px;
+  opacity: 0.75;
+  margin-bottom: 6px;
+}
+
+.remove-col {
+  background: none;
+  border: none;
+  color: #ff8a8a;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.badge.good {
+  background: rgba(0, 200, 120, 0.15);
+  color: #4dffb3;
+}
+
+.badge.bad {
+  background: rgba(255, 80, 80, 0.15);
+  color: #ff7a7a;
+}
+/* ===== College header cards ===== */
+.compare-col {
+  position: relative;
+  padding: 18px 16px 16px;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.12),
+      rgba(255,255,255,0.02)
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.15),
+    0 10px 25px rgba(0,0,0,0.25);
+  backdrop-filter: blur(8px);
+  min-width: 240px;
+}
+
+/* subtle accent line at top */
+.compare-col::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 3px;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(90deg, #5b8cff, #8a7dff);
+}
+
+/* College name */
+.compare-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+/* City text */
+.compare-city {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 10px;
+}
+
+/* Remove button */
+.remove-col {
+  background: none;
+  border: none;
+  color: #ff8a8a;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.remove-col:hover {
+  text-decoration: underline;
+}
+
+/* ===== Improve table header spacing ===== */
+#compareTable thead th {
+  padding-bottom: 20px;
+  vertical-align: top;
+}
+#compareTable thead th:nth-child(2) .compare-col::before {
+  background: linear-gradient(90deg, #4dffb3, #00d084);
+}
+
+#compareTable thead th:nth-child(3) .compare-col::before {
+  background: linear-gradient(90deg, #ffb86c, #ff7a18);
+}
+
+#compareTable thead th:nth-child(4) .compare-col::before {
+  background: linear-gradient(90deg, #ff6ec7, #c77dff);
+}
+/* ===== Section headers (COST / ACADEMICS / PLACEMENTS / GENERAL) ===== */
+.compare-section {
+  background: none !important;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 18px 0 10px;
+}
+
+/* subtle divider line */
+.compare-section::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #3b82f6, #7c3aed);
+  border-radius: 999px;
+}
+
+/* ===============================
+   FIX HEADER POSITION — COMPARE PAGE ONLY
+   =============================== */
+
+.page-compare .site-header,
+.page-compare #mainHeader {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+/* push content down so it doesn't hide under header */
+.page-compare main,
+.page-compare .wrap:first-of-type {
+  padding-top: 10px;
+}

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CollegeFinder — Discover Colleges After 12th</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+
+<body>
+ <div class="main-content">
+  <!-- HERO SECTION WITH ROTATING BACKGROUND -->
+  <section class="hero" id="heroSection">
+
+    <!-- Background layers -->
+    <div class="hero-bg" id="heroBg0"></div>
+    <div class="hero-bg" id="heroBg1"></div>
+
+    <!-- Dark overlay for readability -->
+    <div class="hero-overlay"></div>
+
+    <!-- HEADER -->
+    <header class="site-header transparent" id="mainHeader">
+      <div class="wrap header-row">
+        <div class="brand-text">CollegeFinder</div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="#streams" class="nav-link">Streams</a>
+          <a href="#colleges" class="nav-link">Colleges</a>
+        </nav>
+
+        <!-- PROFILE MENU (NEW) -->
+        <div class="header-actions">
+          <div class="profile-menu">
+            <button id="profileToggle" class="profile-btn">
+              ☰
+              <img src="assets/images/avatar.png" class="profile-avatar" alt="User">
+            </button>
+
+            <div id="profileDropdown" class="profile-dropdown">
+              <a href="profile.html" class="dropdown-item logged-in">My Profile</a>
+              <a href="compare.html" class="dropdown-item logged-in">Compare Colleges</a>
+              <button id="logoutBtn" class="dropdown-item logged-in">Logout</button>
+
+              <a href="auth.html" class="dropdown-item logged-out">Login</a>
+              <a href="auth.html" class="dropdown-item logged-out">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO TEXT + SEARCH -->
+    <div class="wrap hero-centered hero-content">
+      <h1 class="hero-title">Discover the Best Colleges After 12th</h1>
+      <p class="hero-subtitle">Search colleges by streams, location, ranking, fees and cut-offs.</p>
+
+      <div class="search-card hero-search-box">
+        <div class="hero-row">
+          <div class="search-wrapper">
+  <input id="hero-query" class="input"
+    placeholder="Search colleges or courses e.g. B.Tech, B.Sc, MBBS"
+    autocomplete="off" />
+  <div id="searchSuggestions" class="search-suggestions hidden"></div>
+</div>
+
+          <select id="hero-stream" class="select">
+  <option value="">All Streams</option>
+</select>
+
+          <button id="hero-search" class="btn primary">Search</button>
+        </div>
+
+        <div class="hero-chips">
+          <button class="chip" data-stream="Engineering">B.Tech</button>
+          <button class="chip" data-stream="Science">B.Sc</button>
+          <button class="chip" data-stream="Medical">MBBS</button>
+          <button class="chip" data-stream="Commerce">BBA / B.Com</button>
+          <button class="chip" data-stream="Pharmacy">B.Pharm</button>
+          <button class="chip" data-stream="Design">Design</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+  <!-- STREAM CARDS BELOW HERO -->
+  <section id="streams" class="wrap stream-section">
+    <h2 class="section-heading">Explore Popular Streams</h2>
+
+    <div class="stream-cards hero-stream-grid">
+
+      <div class="stream-card" data-stream="Engineering">
+        <img src="assets/images/stream-engineering.png" class="stream-icon">
+        <div>
+          <div class="stream-title">Engineering</div>
+          <div class="stream-sub">B.Tech / BE, Diploma</div>
+        </div>
+      </div>
+
+      <div class="stream-card" data-stream="Science">
+        <img src="assets/images/stream-science.png" class="stream-icon">
+        <div>
+          <div class="stream-title">Science</div>
+          <div class="stream-sub">B.Sc, BCA, Data Science</div>
+        </div>
+      </div>
+
+      <div class="stream-card" data-stream="Commerce">
+        <img src="assets/images/stream-commerce.png" class="stream-icon">
+        <div>
+          <div class="stream-title">Commerce</div>
+          <div class="stream-sub">B.Com, BBA, BMS</div>
+        </div>
+      </div>
+
+      <div class="stream-card" data-stream="Medical">
+        <img src="assets/images/stream-medical.png" class="stream-icon">
+        <div>
+          <div class="stream-title">Medical</div>
+          <div class="stream-sub">MBBS, BDS, B.Pharm</div>
+        </div>
+      </div>
+
+      <div class="stream-card" data-stream="Design">
+        <img src="assets/images/stream-design.png" class="stream-icon">
+        <div>
+          <div class="stream-title">Design</div>
+          <div class="stream-sub">Fashion, Interior, Animation</div>
+        </div>
+      </div>
+
+      <div class="stream-card" data-stream="Law">
+        <img src="assets/images/stream-law.png" class="stream-icon">
+        <div>
+          <div class="stream-title">Law</div>
+          <div class="stream-sub">BA LLB, BBA LLB</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT AREA -->
+   <section id="colleges" class="main-area">
+  <div class="wrap main-grid" style="padding-top:80px">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar card">
+      <h3>Filters</h3>
+
+      <label>Stream</label>
+      <select id="filter-stream"></select>
+
+      <label>City</label>
+      <input id="filter-city" placeholder="e.g. Mumbai">
+
+      <label>Max Fees</label>
+      <input type="number" id="filter-fees" placeholder="e.g. 150000">
+
+      <label>Min Cutoff (%)</label>
+      <input type="number" id="filter-cutoff" placeholder="e.g. 80">
+
+      <div class="actions">
+        <button id="filter-search" class="btn sm">Apply</button>
+        <button id="filter-reset" class="btn outline sm">Reset</button>
+      </div>
+
+      <hr>
+
+      <h4>Popular Streams</h4>
+      <ul class="side-list">
+        <li>B.Tech</li>
+        <li>B.Sc CS/IT</li>
+        <li>B.Pharm</li>
+        <li>BBA / B.Com</li>
+        <li>MBBS</li>
+      </ul>
+    </aside>
+   
+
+
+    <!-- RESULTS AREA -->
+    <section class="results-area">
+       <!-- Active Filters -->
+<div id="activeFilters" class="active-filters hidden">
+  <div id="filterChips" class="filter-chips"></div>
+  <button id="clearAllFilters" class="clear-all-btn">Clear All</button>
+</div>
+
+      <div class="card toolbar">
+        <div>Showing results for <strong id="results-title">All Streams</strong></div>
+
+        <div>
+          <label>Sort</label>
+          <select id="sort-results">
+            <option value="relevance">Relevance</option>
+            <option value="fees_asc">Fees Low → High</option>
+            <option value="cutoff_desc">Cutoff High → Low</option>
+            <option value="ranking_asc">Ranking Best → Worst</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="results" class="results-list"></div>
+      <div id="pagination" class="pagination"></div>
+
+    </section>
+
+    
+
+
+  </div>
+   </section>
+
+  <section class="top10-section">
+  <div class="container">
+    <h2 class="top10-title">Top 10 Colleges</h2>
+    <div class="top10-chips">
+  <button class="top10-chip active" data-stream="All">All</button>
+  <button class="top10-chip" data-stream="Engineering">Engineering</button>
+  <button class="top10-chip" data-stream="Medical">Medical</button>
+  <button class="top10-chip" data-stream="Commerce">Commerce</button>
+  <button class="top10-chip" data-stream="Science">Science</button>
+  <button class="top10-chip" data-stream="Law">Law</button>
+</div>
+
+   <div class="top10-container">
+    <div class="top10-leaderboard" id="top10Body">
+  <!-- Dynamic cards will come here -->
+
+
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>College</th>
+            <th>City</th>
+            <th>Rating</th>
+            <th>Cutoff</th>
+            <th>Fees</th>
+          </tr>
+        </thead>
+        <tbody id="top10Body">
+          <!-- Dynamic content -->
+        </tbody>
+      
+</div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= EXPLORE COURSES SECTION ================= -->
+<section class="courses-section">
+  <div class="wrap">
+    <h2 class="courses-title">Explore Courses</h2>
+
+    <div id="coursesGrid" class="course-grid">
+    
+
+      <!-- Course cards will load here -->
+    </div>
+    <div id="coursesPagination" class="pagination"></div>
+  </div>
+</section>
+
+<!-- Course Modal -->
+<div id="courseModal" class="course-modal hidden">
+  <div class="course-modal-content">
+    <span id="closeCourseModal" class="close-btn">&times;</span>
+    <h3 id="modalCourseName"></h3>
+    <p><strong>Duration:</strong> <span id="modalCourseDuration"></span></p>
+    <p><strong>Average Fees:</strong> ₹<span id="modalCourseFees"></span></p>
+    <p><strong>Scope:</strong></p>
+    <p id="modalCourseScope"></p>
+
+    <div class="course-modal-actions">
+  <button id="viewCollegesBtn" class="btn primary">
+    View Colleges
+  </button>
+</div>
+
+  </div>
+</div>
+
+
+  <!-- #footer  -->
+</div>
+ <footer class="main-footer">
+  <div class="footer-container">
+
+    <h2 class="footer-logo">CollegeFinder</h2>
+    <p class="footer-tagline">
+      A smart platform to help students discover and compare colleges after 12th.
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="compare.html">Compare Colleges</a>
+      <a href="profile.html">My Profile</a>
+    </div>
+
+    <p class="footer-disclaimer">
+      College data shown is for informational purposes only and may vary.
+    </p>
+
+    <p class="footer-copy">
+      © 2026 CollegeFinder. All rights reserved.
+    </p>
+
+  </div>
+</footer>
+
+
+
+
+  <!-- JS -->
+  <!-- <script src="assets/js/data.js"></script> -->
+   <script src="assets/js/api.js"></script>
+  <script src="assets/js/index.js"></script>
+  
+  <script src="assets/js/home.js"></script>
+  
+
+
+
+</body>
+
+</html>

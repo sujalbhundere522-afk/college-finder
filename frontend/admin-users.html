@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="logo">CollegeFinder Admin</div>
+    <nav>
+        <a href="admin-dashboard.html">Dashboard</a>
+        <a href="admin.html">Manage Colleges</a>
+        <a href="auth.html">Logout</a>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+
+    <h1 class="dashboard-title">Manage Users</h1>
+
+    <div class="card">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <!-- Users will load here -->
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="assets/js/admin-users.js"></script>
+
+</body>
+</html>

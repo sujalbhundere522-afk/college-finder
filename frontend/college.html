@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>College Details | CollegeFinder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/college.css">
+</head>
+
+<body>
+ <div class="main-content">
+<header class="site-header solid">
+  <div class="wrap header-row">
+    <div class="brand-text">CollegeFinder</div>
+   <nav class="nav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="index.html" class="nav-link">Streams</a>
+  <a href="index.html" class="nav-link">Colleges</a>
+</nav>
+
+<!-- PROFILE MENU -->
+<div class="header-actions">
+  <div class="profile-menu">
+    <button id="profileToggle" class="profile-btn">
+      ☰
+      <img src="assets/images/avatar.png" class="profile-avatar" alt="User">
+    </button>
+
+    <div id="profileDropdown" class="profile-dropdown">
+      <a href="profile.html" class="dropdown-item logged-in">My Profile</a>
+      <button id="logoutBtn" class="dropdown-item logged-in">Logout</button>
+
+      <a href="auth.html" class="dropdown-item logged-out">Login</a>
+      <a href="auth.html" class="dropdown-item logged-out">Sign Up</a>
+    </div>
+  </div>
+</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="college-hero">
+  <div class="wrap hero-grid">
+    <img id="collegeImage" class="college-hero-img" src="" alt="College Image">
+
+    <div>
+      <h1 id="collegeName"></h1>
+
+      <div class="hero-meta">
+        <span id="collegeStream" class="badge"></span>
+        <span id="collegeCity"></span>
+        <span>⭐ <span id="collegeRating"></span></span>
+      </div>
+
+      <div class="hero-actions">
+        <button type="button" id="saveCollegeBtn" class="btn ghost">♡ Save College</button>
+        <button type="button" id="addCompareBtn" class="btn primary">+ Add to Compare</button>
+        <a id="officialWebsiteBtn" class="btn outline" href="#" target="_blank" style="display:none">
+          Official Website
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<section class="wrap stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">Fees</div>
+    <div id="collegeFees" class="stat-value"></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Cutoff</div>
+    <div id="collegeCutoff" class="stat-value"></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Ranking</div>
+    <div id="collegeRank" class="stat-value"></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Placement</div>
+    <div id="collegePlacement" class="stat-value"></div>
+  </div>
+</section>
+
+<main class="wrap college-content">
+
+  <!-- ABOUT -->
+  <section class="card">
+    <h2>About College</h2>
+    <p id="collegeAbout"></p>
+  </section>
+
+  <!-- COURSES -->
+  <section class="card">
+  <h2>Courses Offered</h2>
+
+  <div id="courseContainer" class="course-grid"></div>
+
+  <div id="coursePagination" class="pagination"></div>
+
+  <p id="noCoursesMsg" class="muted" style="display:none">
+    Course details will be available soon.
+  </p>
+</section>
+
+  <!-- PLACEMENTS -->
+  <section class="card">
+    <h2>Placements</h2>
+    <div class="placement-grid">
+      <div class="placement-card">
+        <div class="placement-label">Placement Rate</div>
+        <div id="placePercent" class="placement-value green"></div>
+      </div>
+      <div class="placement-card">
+        <div class="placement-label">Average Package</div>
+        <div id="placeAvg" class="placement-value blue"></div>
+      </div>
+      <div class="placement-card">
+        <div class="placement-label">Highest Package</div>
+        <div id="placeHigh" class="placement-value purple"></div>
+      </div>
+    
+
+    </div>
+
+    <h3 style="margin-top:20px">Top Recruiters</h3>
+    <div id="recruiterList" class="recruiter-list"></div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="card">
+    <h2>Student Reviews</h2>
+
+    <div class="review-summary">
+      <div class="review-score">⭐ <span id="reviewAvg">-</span> / 5</div>
+      <div class="muted">Based on student feedback</div>
+    </div>
+
+    <div id="reviewList" class="review-list"></div>
+    <p id="noReviewMsg" class="muted" style="display:none">
+      No reviews available yet.
+    </p>
+
+    <hr style="margin:20px 0">
+
+    <h3>Write a Review</h3>
+
+    <form id="reviewForm" class="review-form">
+      <input id="reviewName" type="text" placeholder="Your Name" required>
+
+      <select id="reviewRating" required>
+        <option value="">Rating</option>
+        <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+        <option value="4">⭐⭐⭐⭐ (4)</option>
+        <option value="3">⭐⭐⭐ (3)</option>
+        <option value="2">⭐⭐ (2)</option>
+        <option value="1">⭐ (1)</option>
+      </select>
+
+      <textarea id="reviewComment" rows="3" placeholder="Write your experience..." required></textarea>
+
+      <button type="submit" class="btn primary">Submit Review</button>
+    </form>
+  </section>
+
+  <!-- FACILITIES -->
+  <section class="card">
+    <h2>Facilities</h2>
+    <div id="collegeFacilities" class="facility-list"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card">
+    <h2>Contact Information</h2>
+    <div class="contact-grid">
+      <div><strong>Phone</strong><p id="collegePhone" class="muted"></p></div>
+      <div><strong>Email</strong><p id="collegeEmail" class="muted"></p></div>
+      <div><strong>Website</strong><p><a id="collegeWebsite" href="#" target="_blank"></a></p></div>
+      <div><strong>Address</strong><p id="collegeAddress" class="muted"></p></div>
+    </div>
+  </section>
+
+</main>
+</div>
+<footer class="main-footer">
+  <div class="footer-container">
+
+    <h2 class="footer-logo">CollegeFinder</h2>
+    <p class="footer-tagline">
+      A smart platform to help students discover and compare colleges after 12th.
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="compare.html">Compare Colleges</a>
+      <a href="profile.html">My Profile</a>
+    </div>
+
+    <p class="footer-disclaimer">
+      College data shown is for informational purposes only and may vary.
+    </p>
+
+    <p class="footer-copy">
+      © 2026 CollegeFinder. All rights reserved.
+    </p>
+
+  </div>
+</footer>
+
+
+<!-- <script src="assets/js/data.js"></script> -->
+ <script src="assets/js/api.js"></script>
+<script src="assets/js/college.js"></script>
+
+</body>
+</html>

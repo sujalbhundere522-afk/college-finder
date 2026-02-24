@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<header class="site-header">
+    <div class="logo">CollegeFinder Admin</div>
+    <nav>
+        <a href="admin.html">Manage Colleges</a>
+        <a href="admin-users.html">Manage Users</a>
+        <a href="auth.html">Logout</a>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+
+    <h1 class="dashboard-title">Admin Dashboard</h1>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Colleges</h3>
+            <p id="totalColleges">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <p id="totalUsers">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Reviews</h3>
+            <p id="totalReviews">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Saved</h3>
+            <p id="totalSaved">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Compared</h3>
+            <p id="totalCompared">0</p>
+        </div>
+    </div>
+
+
+    <div class="charts-grid">
+
+  <div class="card chart-card">
+    <h2>Colleges by Stream</h2>
+    <canvas id="streamChart"></canvas>
+  </div>
+
+  <div class="card chart-card">
+    <h2>Colleges by City</h2>
+    <canvas id="cityChart"></canvas>
+  </div>
+
+  <div class="card chart-card">
+    <h2>Reviews per College</h2>
+    <canvas id="reviewChart"></canvas>
+  </div>
+
+  <section class="card">
+  <h2>Users by Role</h2>
+  <canvas id="userChart"></canvas>
+</section>
+
+
+</div>
+
+
+
+    <div class="card">
+        <h2>Most Saved College</h2>
+        <div id="mostSaved"></div>
+    </div>
+
+    <div class="card">
+    <h2>Highest Placement College</h2>
+    <div id="highestPlacement"></div>
+</div>
+
+
+    <div class="card">
+        <h2>Top Rated Colleges</h2>
+        <div id="topRated"></div>
+    </div>
+
+</div>
+
+
+<script src="assets/js/admin-dashboard.js"></script>
+
+</body>
+</html>

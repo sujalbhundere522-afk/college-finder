@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CollegeFinder – Login / Sign Up</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e1b4b 45%, #3b82f6);
+      color: #fff;
+    }
+
+    /* HEADER */
+    .auth-header {
+      padding: 20px 30px;
+    }
+
+    .brand-text {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #3B82F6, #7C3AED);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    /* MAIN CARD */
+    .auth-container {
+      max-width: 1050px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+    }
+
+    /* LEFT PANEL */
+    .auth-left {
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .auth-left img {
+      width: 70%;
+      margin-bottom: 20px;
+    }
+
+    .auth-left h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    /* SOCIAL BUTTONS */
+    .social-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      color: #111;
+    }
+
+    .social-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .social-btn:hover {
+      background: #f3f4f6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* RIGHT PANEL */
+    .auth-right {
+      background: #fff;
+      padding: 40px 35px;
+      color: #111;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      background: #e5e7eb;
+      border: 1px solid #d1d5db;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(90deg, #3B82F6, #7C3AED);
+      color: #fff;
+      border: none;
+    }
+
+    /* FORMS */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      font-size: 15px;
+    }
+
+    .form-group input::placeholder {
+      color: #777;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(90deg, #3B82F6, #7C3AED);
+      margin-top: 10px;
+      transition: 0.25s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-outline {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      margin-top: 6px;
+      background: transparent;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    @media(max-width: 900px) {
+      .auth-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    .message {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.message.error {
+  color: #dc2626;
+}
+
+.message.success {
+  color: #16a34a;
+}
+  </style>
+</head>
+
+<body>
+
+  <header class="auth-header">
+    <div class="brand-text">CollegeFinder</div>
+  </header>
+
+  <div class="auth-container">
+
+    <!-- LEFT (illustration + social login) -->
+    <div class="auth-left">
+      <img src="assets/images/auth-banner.svg" alt="Students illustration">
+      <h2>Welcome to CollegeFinder</h2>
+      <p>Sign in or create an account to save colleges, compare options and get recommendations.</p>
+
+      <!-- <div class="social-row">
+        <button class="social-btn" id="googleLogin">
+          <img src="assets/images/google.png" alt="">
+          <span>Google</span>
+        </button>
+
+        <button class="social-btn" id="facebookLogin">
+          <img src="assets/images/facebook.png" alt="">
+          <span>Facebook</span>
+        </button>
+      </div> -->
+    </div>
+
+    <!-- RIGHT (forms) -->
+    <div class="auth-right">
+
+      <div class="tab-buttons">
+        <div id="tabLogin" class="tab-btn active">Login</div>
+        <div id="tabSignup" class="tab-btn">Sign Up</div>
+      </div>
+
+      <!-- LOGIN -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input id="loginEmail" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input id="loginPass" type="password" placeholder="Enter password" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Login</button>
+
+        <button type="button" id="forgotBtn" class="btn-outline">Forgot Password?</button>
+
+        <div id="loginMessage" class="message"></div>
+      </form>
+
+      <!-- SIGN UP -->
+      <form id="signupForm" class="hidden">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input id="signupName" type="text" placeholder="Your name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input id="signupEmail" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input id="signupPass" type="password" placeholder="At least 6 characters" required>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input id="signupPass2" type="password" placeholder="Re-enter password" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Create Account</button>
+        <button type="button" id="backToLogin" class="btn-outline">Back to Login</button>
+
+        <div id="signupMessage" class="message"></div>
+      </form>
+
+    </div>
+  </div>
+ <script src="assets/js/api.js"></script>
+  <script src="assets/js/auth.js"></script>
+ 
+
+</body>
+</html>
