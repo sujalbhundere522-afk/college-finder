@@ -15,7 +15,7 @@ function createCollegeCard(college) {
 
         <div>
           <h3>
-            <a href="../frontend/college.html?id=${college.id}" target="_blank">
+            <a href="college.html?id=${college.id}" target="_blank">
               ${college.name}
             </a>
           </h3>
