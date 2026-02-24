@@ -3,7 +3,7 @@
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-const API_BASE = "http://https://college-finder-fx5r.onrender.com";
+const API_BASE = "https://college-finder-fx5r.onrender.com";
 
 
 // ================= AUTH GUARD =================

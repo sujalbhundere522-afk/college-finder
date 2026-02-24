@@ -1,7 +1,7 @@
 // assets/js/compare.js
 (function () {
 
-  const API_BASE = "http://https://college-finder-fx5r.onrender.com";
+  const API_BASE = "https://college-finder-fx5r.onrender.com";
  
   let SELECTED_COLLEGES = [];
 
@@ -25,7 +25,7 @@
     if (!token) return;
 
     try {
-      const res = await safeFetch("http://https://college-finder-fx5r.onrender.com/api/users/compare");
+      const res = await safeFetch("https://college-finder-fx5r.onrender.com/api/users/compare");
 
       if (!res.ok) return;
 
@@ -37,7 +37,7 @@
   }
 
   async function removeFromCompare(id) {
-    await safeFetch(`http://https://college-finder-fx5r.onrender.com/api/users/compare/${id}`, {
+    await safeFetch(`https://college-finder-fx5r.onrender.com/api/users/compare/${id}`, {
       method: "DELETE"
     });
 
@@ -47,7 +47,7 @@
 
   async function clearCompare() {
     for (const c of SELECTED_COLLEGES) {
-      await safeFetch(`http://https://college-finder-fx5r.onrender.com/api/users/compare/${c.id}`, {
+      await safeFetch(`https://college-finder-fx5r.onrender.com/api/users/compare/${c.id}`, {
   method: "DELETE"
 });
 

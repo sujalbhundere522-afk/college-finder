@@ -1,5 +1,5 @@
 // assets/js/index.js
-const API_BASE = "http://https://college-finder-fx5r.onrender.com";
+const API_BASE = "https://college-finder-fx5r.onrender.com";
 
 async function loadColleges() {
   try {
