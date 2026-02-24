@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:5000";
+const API_BASE = "http://https://college-finder-fx5r.onrender.com";
 const token = localStorage.getItem("cf_token");
 let streamChart, cityChart, reviewChart;
 

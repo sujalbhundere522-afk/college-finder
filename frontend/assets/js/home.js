@@ -56,7 +56,7 @@ if (header) {
   // ================= GLOBALS =================
   window.COMPARED_IDS = [];
 
-const API = "http://127.0.0.1:5000/api/colleges";
+const API = "http://https://college-finder-fx5r.onrender.com/api/colleges";
 
 
   const PAGE_SIZE = 6;
@@ -92,7 +92,7 @@ const API = "http://127.0.0.1:5000/api/colleges";
       if (!requireLogin("clear compare list")) return;
 
       for (const id of window.COMPARED_IDS) {
-        await safeFetch(`http://127.0.0.1:5000/api/users/compare/${id}`, {
+        await safeFetch(`http://https://college-finder-fx5r.onrender.com/api/users/compare/${id}`, {
           method: "DELETE",
           headers: authHeaders()
         });
@@ -350,7 +350,7 @@ for (let i = 0; i < 4; i++) {
     const token = localStorage.getItem("cf_token");
     if (!token) return [];
 
-    const res = await safeFetch("http://127.0.0.1:5000/api/users/compare")
+    const res = await safeFetch("http://https://college-finder-fx5r.onrender.com/api/users/compare")
     if (!res.ok) return [];
     const data = await res.json();
     return data.map(c => String(c.id));
@@ -550,7 +550,7 @@ card.innerHTML = `
     const isAdded = window.COMPARED_IDS.includes(String(id));
 
     if (isAdded) {
-      await safeFetch(`http://127.0.0.1:5000/api/users/compare/${id}`, {
+      await safeFetch(`http://https://college-finder-fx5r.onrender.com/api/users/compare/${id}`, {
         method: "DELETE"
       });
 
@@ -561,7 +561,7 @@ card.innerHTML = `
       btn.textContent = "+ Compare";
 
     } else {
-      await safeFetch("http://127.0.0.1:5000/api/users/compare", {
+      await safeFetch("http://https://college-finder-fx5r.onrender.com/api/users/compare", {
         method: "POST",
         body: JSON.stringify({ college_id: Number(id) })
       });
@@ -787,7 +787,7 @@ const COURSES_PER_PAGE = 6;
 
 async function loadCourses() {
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/courses/");
+    const res = await fetch("http://https://college-finder-fx5r.onrender.com/api/courses/");
     ALL_COURSES = await res.json();
 
     renderCoursesPage();
